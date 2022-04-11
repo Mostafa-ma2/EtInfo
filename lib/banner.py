@@ -22,7 +22,7 @@ class banner():
               ╚═════════════╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦═╦══════════════╝
                             ║S║y║s║t║e║m║ ║ ║ ║ ║ ║ ║ ║ ║S║m║a║s║h║e║r║s║ 
                           ╔═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╩═╗
-                          ║\x1b[33m Channel : SystemSmashers\x1b[36m                      ║
+                          ║\x1b[33m Group : SystemSmashers\x1b[36m                      ║
                           ║\x1b[33m Developers : Mostafa Abedini(Mostafa-ma2)\x1b[36m     ║
                           \x1b[36m╚═══════════════════════════════════════════════╝\x1b[36m
                           \n\x1b[37m  OPTIONS:\n
