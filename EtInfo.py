@@ -11,7 +11,7 @@ app_version="1.0.0"
 
 if __name__ == "__main__":
     helper().pkg_install()
-    helper(app_version).check_update()
+    helper().check_internet()
     if is_running:
         helper().clear()
         banner.banner()
