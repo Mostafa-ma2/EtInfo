@@ -5,7 +5,6 @@
 # @url    : https://github.com/Mostafa-ma2
 # @another : Mostafa Abedini(Mostafa-ma2)
 
-from re import A
 from lib.colors import colors
 
 class banner():

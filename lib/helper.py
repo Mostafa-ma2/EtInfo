@@ -9,7 +9,6 @@ import os
 import requests
 import sys
 import json
-import importlib.util
 import socket
 from IPy import IP 
 from lib.colors import colors
@@ -31,23 +30,7 @@ class helper:
         else:
             os.system("clear")
 
-    def pkg_install(self):
-        fail = True
-        with open(self.path + '/requirements.txt', 'r') as rqr:
-            pkg_list = rqr.read().strip().split("\n")
-        for pkg in pkg_list:
-            spec = importlib.util.find_spec(pkg)
-            if spec is None:
-                print(colors.Red + '[-]' + colors.White + ' {}'.format(pkg) +
-                      colors.Cyan + ' is not Installed!' + colors.White)
-                fail = False
-            else:
-                pass
-        if fail == False:
-            print('\n' + colors.Red + '[-]' + colors.Cyan + ' Please Execute ' + colors.White +
-                  'pip3 install -r requirements.txt' + colors.Cyan + ' to Install Missing Packages' + colors.White + '\n')
-            sys.exit()
-
+   
     def check_internet(self):
         try:
             socket.setdefaulttimeout(self.socket_timeout)
@@ -88,9 +71,14 @@ class helper:
                 colors.Cyan + '[' + colors.Green + ' Available : {} '.format(version) + colors.Cyan + ']' + '\n')
     
     def check_ipAdress(self):
-         try:
-             IP(self.ipAddress)
-             return(self.ipAddress)
-         except:
-             return socket.gethostbyname(self.ipAddress)
+        try:
+            IP(self.ipAddress)
+            return(self.ipAddress)
+        except:
+            try:
+                return socket.gethostbyname(self.ipAddress)
+            except:
+                print('\n' + colors.Red + '[-] Error :' + colors.White +
+                  ' Please check your ip/website ' + colors.Cyan + '!\n')
+                sys.exit()
 
