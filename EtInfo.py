@@ -9,8 +9,8 @@ from lib.banner import banner
 is_running= True # project has running
 
 
-
 if __name__ == "__main__":
+    helper.pkg_install()
     if is_running:
         helper.clear()
         banner.banner()
