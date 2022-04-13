@@ -51,7 +51,7 @@ class helper:
         try:
             socket.setdefaulttimeout(self.socket_timeout)
             socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect(
-                self.socket_ip, self.socket_port)
+                (self.socket_ip, self.socket_port))
             pass
         except socket.error as ex:
             print('\n' + colors.Red +
