@@ -11,18 +11,19 @@ import sys
 import json
 import importlib.util
 import socket
-
+from IPy import IP 
 from lib.colors import colors
 
 
 class helper:
 
-    def __init__(self, app_version=None):
+    def __init__(self, app_version=None,ip_address=None):
         self.path = os.path.dirname(os.path.realpath(__file__))
         self.app_version = app_version
         self.socket_timeout = 3
         self.socket_port = 53
         self.socket_ip = "8.8.8.8"
+        self.ipAddress=ip_address
 
     def clear(self):
         if os.uname().sysname.lower() in "win":
@@ -85,3 +86,11 @@ class helper:
         else:
             print(
                 colors.Cyan + '[' + colors.Green + ' Available : {} '.format(version) + colors.Cyan + ']' + '\n')
+    
+    def check_ipAdress(self):
+         try:
+             IP(self.ipAddress)
+             return(self.ipAddress)
+         except:
+             return socket.gethostbyname(self.ipAddress)
+
