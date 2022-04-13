@@ -1,5 +1,4 @@
 import os
-import sys
 import importlib.util
 
 from lib.colors import colors
@@ -7,7 +6,8 @@ from lib.colors import colors
 class helper:
     
     def __init__(self):
-        pass
+        self.path= os.path.dirname(os.path.realpath(__file__))
+        
     
     def clear():
         if os.uname().sysname.lower() in "win":
@@ -15,9 +15,8 @@ class helper:
         else:
             os.system("clear")
     
-    def pkg_install():
-        path_to_script = os.path.dirname(os.path.realpath(__file__))
-        with open(path_to_script + '/requirements.txt', 'r') as rqr:
+    def pkg_install(self):
+        with open(self.path + '/requirements.txt', 'r') as rqr:
             pkg_list=rqr.read().strip().split("\n")
         for pkg in pkg_list:
             spec= importlib.util.find_spec(pkg)
