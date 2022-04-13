@@ -11,3 +11,4 @@ class colors:
     Cyan = '\033[36m' # cyan
     White = '\033[0m'  # white
     Purple = '\033[35m'  # Purple
+    Yellow = '\033[33m' # yellow
