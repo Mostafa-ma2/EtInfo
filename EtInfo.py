@@ -27,7 +27,6 @@ def main():
         port_scan(ipAddress=helper(None,ip_address).check_ipAdress()).scan()
     
     
-    
     if option == "0" or option.lower() == "exit":
         do_want=False
     else:
