@@ -18,7 +18,7 @@ def main():
                                                            )) + ']' + colors.White+' Please select an option ' + colors.Cyan+': ')
     if option == "1" or option.lower() == "whois":
         ip_address = input('\n'+
-            colors.Green + '[ + ]' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
+            colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
         whois(helper(None,ip_address).check_ipAdress(),data).whois_lookup()
     
     
@@ -28,7 +28,7 @@ def main():
         do_want=input('\n'+colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
                                                            )) + ']' + colors.White+' Do you want to continue?(y/n) ' + colors.Cyan+': ')
     if do_want.lower() == "n" or do_want.lower() == "no":
-        print('\n'+colors.Green + '[ + ]' + colors.White + 'Good luck '+colors.Cyan+'! ')
+        print('\n'+colors.Green + '[ + ]' + colors.White + ' Good luck '+colors.Cyan+'! ')
         is_running  = False
 
 def pkg_install(path):
