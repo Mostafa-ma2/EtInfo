@@ -21,6 +21,12 @@ def main():
             colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
         whois(helper(None,ip_address).check_ipAdress(),data).whois_lookup()
     
+    elif option == "2" or option.lower() == "port scan":
+        ip_address = input('\n'+
+            colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
+        port_scan(ipAddress=helper(None,ip_address).check_ipAdress()).scan()
+    
+    
     
     if option == "0" or option.lower() == "exit":
         do_want=False
@@ -55,7 +61,7 @@ if __name__ == "__main__":
     from lib.helper import helper
     from lib.banner import banner
     from modules.whois import whois
-    
+    from modules.port_scan import port_scan
     helper().check_internet() #check internet connection
     while is_running:
         helper().clear() # cleen terminal
