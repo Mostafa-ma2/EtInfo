@@ -28,7 +28,7 @@ def main():
     
     
     if option == "0" or option.lower() == "exit":
-        do_want=False
+        do_want='no'
     else:
         do_want=input('\n'+colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
                                                            )) + ']' + colors.White+' Do you want to continue?(y/n) ' + colors.Cyan+': ')
