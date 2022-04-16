@@ -18,8 +18,7 @@ def main():
     option = input(colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
                                                            )) + ']' + colors.White+' Please select an option ' + colors.Cyan+': ')
     if option != '3' and option.lower() != "dns record":
-        ip_address = input('\n' +
-                       colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
+        ip_address = get_ipAddress('ip/website')
 
     if option == "1" or option.lower() == "whois":
         whois(helper(None, ip_address).check_ipAdress(), data).whois_lookup()
@@ -28,8 +27,7 @@ def main():
         port_scan(ipAddress=helper(None, ip_address).check_ipAdress()).scan()
 
     elif option == "3" or option.lower() == "dns record":
-        ip_address = input('\n' +
-                       colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
+        ip_address = get_ipAddress('website')
         dns_record(ipAddress=helper(
             None, ip_address).check_domain()).dnsrec()
 
@@ -60,6 +58,11 @@ def pkg_install(path):
         print('\n' + colors.Red + '[-]' + colors.Cyan + ' Please Execute ' + colors.White +
               'pip3 install -r requirements.txt' + colors.Cyan + ' to Install Missing Packages' + colors.White + '\n')
         sys.exit()
+
+
+def get_ipAddress(txt):
+    return input('\n' +
+                 colors.Green + '[ + ] ' + colors.White + 'Please type ('+txt+') '+colors.Cyan+': ')
 
 
 if __name__ == "__main__":
