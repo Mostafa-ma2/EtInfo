@@ -17,9 +17,10 @@ def main():
     global is_running
     option = input(colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
                                                            )) + ']' + colors.White+' Please select an option ' + colors.Cyan+': ')
-    ip_address = input('\n' +
+    if option != '3' and option.lower() != "dns record":
+        ip_address = input('\n' +
                        colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
-    
+
     if option == "1" or option.lower() == "whois":
         whois(helper(None, ip_address).check_ipAdress(), data).whois_lookup()
 
@@ -27,7 +28,10 @@ def main():
         port_scan(ipAddress=helper(None, ip_address).check_ipAdress()).scan()
 
     elif option == "3" or option.lower() == "dns record":
-        dns_record(ipAddress=helper(None, ip_address).check_ipAdress()).dns_record()
+        ip_address = input('\n' +
+                       colors.Green + '[ + ] ' + colors.White + 'Please type (ip/website) '+colors.Cyan+': ')
+        dns_record(ipAddress=helper(
+            None, ip_address).check_domain()).dnsrec()
 
     if option == "0" or option.lower() == "exit":
         do_want = 'no'
