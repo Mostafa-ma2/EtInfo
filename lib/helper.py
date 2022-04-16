@@ -84,7 +84,6 @@ class helper:
 
     def check_domain(self):
         
-        s=whois.whois(self.ipAddress)
         if whois.whois(self.ipAddress).domain_name != None:
             return self.ipAddress
 
