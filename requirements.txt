@@ -4,3 +4,4 @@ IPy
 atexit
 socket
 threading
+dnslib
