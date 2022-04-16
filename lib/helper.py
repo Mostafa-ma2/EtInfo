@@ -10,19 +10,20 @@ import requests
 import sys
 import json
 import socket
-from IPy import IP 
+import whois
+from IPy import IP
 from lib.colors import colors
 
 
 class helper:
 
-    def __init__(self, app_version=None,ip_address=None):
+    def __init__(self, app_version=None, ip_address=None):
         self.path = os.path.dirname(os.path.realpath(__file__))
         self.app_version = app_version
         self.socket_timeout = 3
         self.socket_port = 53
         self.socket_ip = "8.8.8.8"
-        self.ipAddress=ip_address
+        self.ipAddress = ip_address
 
     def clear(self):
         if os.uname().sysname.lower() in "win":
@@ -30,7 +31,6 @@ class helper:
         else:
             os.system("clear")
 
-   
     def check_internet(self):
         try:
             socket.setdefaulttimeout(self.socket_timeout)
@@ -69,7 +69,7 @@ class helper:
         else:
             print(
                 colors.Cyan + '[' + colors.Green + ' Available : {} '.format(version) + colors.Cyan + ']' + '\n')
-    
+
     def check_ipAdress(self):
         try:
             IP(self.ipAddress)
@@ -79,6 +79,22 @@ class helper:
                 return socket.gethostbyname(self.ipAddress)
             except:
                 print('\n' + colors.Red + '[-] Error :' + colors.White +
-                  ' Please check your ip/website ' + colors.Cyan + '!\n')
+                      ' Please check your ip/website ' + colors.Cyan + '!\n')
                 sys.exit()
 
+    def check_domain(self):
+        
+        s=whois.whois(self.ipAddress)
+        if whois.whois(self.ipAddress).domain_name != None:
+            return self.ipAddress
+
+        try:
+            host = socket.gethostbyaddr(self.ipAddress)
+            if len(host[2]) != 0:
+                sys.exit()
+
+            return(host)
+        except:
+            print('\n' + colors.Red + '[-] Error :' + colors.White +
+                  ' Please check your website ' + colors.Cyan + '!\n')
+            sys.exit()
