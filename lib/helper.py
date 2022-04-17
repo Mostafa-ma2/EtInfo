@@ -11,6 +11,7 @@ import sys
 import json
 import socket
 import whois
+import time
 from IPy import IP
 from lib.colors import colors
 
@@ -83,7 +84,7 @@ class helper:
                 sys.exit()
 
     def check_domain(self):
-        
+
         if whois.whois(self.ipAddress).domain_name != None:
             return self.ipAddress
 
@@ -97,3 +98,14 @@ class helper:
             print('\n' + colors.Red + '[-] Error :' + colors.White +
                   ' Please check your website ' + colors.Cyan + '!\n')
             sys.exit()
+
+    def get_output(self, result):
+        output = input('\n'+colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
+                                                                    )) + ']' + colors.White+' If you want to save the output, enter an address to save, otherwise press enter?(text.txt) ' + colors.Cyan+': ')
+        if len(output):
+            res = open('output/'+output, 'w+')
+            for out in result:
+                res.write(out+'\n')
+            
+            print('\n' + colors.Green + '[ + ]' + colors.White +
+                      ' Use this command to read ' + colors.Cyan+': ' + colors.Yellow + 'cat ' + self.path+'/' + res.name)
