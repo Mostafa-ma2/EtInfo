@@ -9,6 +9,7 @@ class whois:
     def __init__(self, ip, data):
         self.ip = ip
         self.data = data
+        self.result=[]
 
     def whois_lookup(self):
         collect = {}
@@ -19,18 +20,23 @@ class whois:
             results = lookup.lookup_whois()
             for k, v in results.items():
                 if v != None:
+                    
                     if isinstance(v, list):
+                        
                         for item in v:
-                            for k, v in results.items():
+                            for k, v in item.items():
+                                out=colors.Green + '[+]' + colors.Cyan + ' {} : '.format(str(k)) + colors.White + str(
+                                        v).replace(',', ' ').replace('\r', ' ').replace('\n', ' ')
                                 if v != None:
-                                    print(colors.Green + '[+]' + colors.Cyan + ' {} : '.format(str(k)) + colors.White + str(
-                                        v).replace(',', ' ').replace('\r', ' ').replace('\n', ' '))
-                                    collect.update({str(k):str(v).replace(',', ' ').replace('\r', ' ').replace('\n', ' ')})
+                                    print(out)
+                                    self.result.append(out)
                                 else:
                                     pass
                     else:
-                         print(colors.Green + '[+]' + colors.Cyan + ' {} : '.format(str(k)) + colors.White + str(
-                                        v).replace(',', ' ').replace('\r', ' ').replace('\n', ' '))
-                         collect.update({str(k):str(v).replace(',', ' ').replace('\r', ' ').replace('\n', ' ')})
+                        out=colors.Green + '[+]' + colors.Cyan + ' {} : '.format(str(k)) + colors.White + str(
+                                        v).replace(',', ' ').replace('\r', ' ').replace('\n', ' ')
+                        print(out)
+                        self.result.append(out)
+            return self.result
         except:
             pass

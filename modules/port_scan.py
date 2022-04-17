@@ -11,7 +11,7 @@ class port_scan:
     def __init__(self, ipAddress):
         self.ipAddress = ipAddress
         self.threads = []
-        self.result = {}
+        self.result = []
         self.protocol = 'udp'
 
     def sock_conn(self, port):
@@ -28,9 +28,9 @@ class port_scan:
             sock.settimeout(3)
             sock.close()
             service = socket.getservbyport(int(port), self.protocol)
-            print(colors.Green + '[+] ' + colors.Cyan +
-                  str(port)+'/'+self.protocol.ljust(5)+ colors.White + service.ljust(9))
-            self.result.update({str(port): service})
+            output=''+colors.Green + '[+] ' + colors.Cyan + str(port)+'/'+self.protocol.ljust(5)+ colors.White + service.ljust(9)+''
+            print(output)
+            self.result.append(output)
         except:
             sock.close()
             pass
@@ -66,3 +66,5 @@ class port_scan:
             sys.exit()
         for thread in self.threads:
             thread.join()
+        
+        return self.result
