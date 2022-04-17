@@ -21,19 +21,22 @@ def main():
         ip_address = get_ipAddress('ip/website')
 
     if option == "1" or option.lower() == "whois":
-        whois(helper(None, ip_address).check_ipAdress(), data).whois_lookup()
+        result= whois(helper(None, ip_address).check_ipAdress(), data).whois_lookup()
 
     elif option == "2" or option.lower() == "port scan":
-        port_scan(ipAddress=helper(None, ip_address).check_ipAdress()).scan()
+        result = port_scan(ipAddress=helper(
+            None, ip_address).check_ipAdress()).scan()
 
     elif option == "3" or option.lower() == "dns record":
         ip_address = get_ipAddress('website')
-        dns_record(ipAddress=helper(
+        result = dns_record(ipAddress=helper(
             None, ip_address).check_domain()).dnsrec()
 
     if option == "0" or option.lower() == "exit":
         do_want = 'no'
     else:
+        helper().get_output(result)
+
         do_want = input('\n'+colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
                                                                      )) + ']' + colors.White+' Do you want to continue?(y/n) ' + colors.Cyan+': ')
     if do_want.lower() == "n" or do_want.lower() == "no":
