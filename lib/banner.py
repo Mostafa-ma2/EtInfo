@@ -28,6 +28,7 @@ class banner():
                           \n\t\x1b[40m(1)\x1b[0m\x1b[37m  Whois\n
                           \n\t\x1b[40m(2)\x1b[0m\x1b[37m  Port Scan\n
                           \n\t\x1b[40m(3)\x1b[0m\x1b[37m  DNS Record\n
+                          \n\t\x1b[40m(3)\x1b[0m\x1b[37m  Check Update\n
                           \n\t\x1b[40m(0)\x1b[0m\x1b[37m  Exit\n""")
     
     def usage():

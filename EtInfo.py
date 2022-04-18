@@ -17,6 +17,8 @@ def main():
     global is_running
     option = input(colors.Green+'[' + format(time.strftime("%H:%M:%S", time.localtime()
                                                            )) + ']' + colors.White+' Please select an option ' + colors.Cyan+': ')
+    if option == "4" or option.lower() == "check update":
+        helper().check_update()
     if option != '3' and option.lower() != "dns record":
         ip_address = get_ipAddress('ip/website')
 
@@ -31,7 +33,7 @@ def main():
         ip_address = get_ipAddress('website')
         result = dns_record(ipAddress=helper(
             None, ip_address).check_domain()).dnsrec()
-
+        
     if option == "0" or option.lower() == "exit":
         do_want = 'no'
     else:
